@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ===== ANIMATED BACKGROUND ===== */
     .tech-bg {
       position: fixed;
       top: 0;
@@ -48,7 +47,6 @@
       z-index: 0;
     }
 
-    /* ===== HEADER ===== */
     header {
       background: rgba(0, 0, 0, 0.95);
       border-bottom: 2px solid var(--primary);
@@ -100,7 +98,6 @@
       font-size: 0.75rem;
     }
 
-    /* ===== URGENT BANNER ===== */
     .urgent-banner {
       background: linear-gradient(90deg, var(--primary) 0%, #FFE500 100%);
       color: #000;
@@ -118,7 +115,6 @@
       50% { opacity: 0.8; }
     }
 
-    /* ===== HERO ===== */
     .hero {
       padding: 80px 20px;
       text-align: center;
@@ -174,7 +170,6 @@
       display: block;
     }
 
-    /* ===== TABS ===== */
     .tabs-container {
       max-width: 1400px;
       margin: 40px auto;
@@ -210,7 +205,6 @@
       border-color: var(--primary);
     }
 
-    /* ===== CHARTS ===== */
     .charts-section {
       max-width: 1400px;
       margin: 40px auto;
@@ -245,7 +239,6 @@
       position: relative;
     }
 
-    /* ===== FILTER BAR ===== */
     .filter-bar {
       max-width: 1400px;
       margin: 30px auto 20px;
@@ -293,7 +286,6 @@
       border-color: var(--primary);
     }
 
-    /* ===== PRODUCTS ===== */
     .products-section {
       max-width: 1400px;
       margin: 0 auto 60px;
@@ -427,7 +419,6 @@
       box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
     }
 
-    /* ===== FOOTER ===== */
     footer {
       background: rgba(21, 21, 21, 0.95);
       padding: 60px 20px;
@@ -520,4 +511,185 @@
   transform: translateY(-2px);
   background: rgba(255, 215, 0, 0.18);
   border-color: rgba(255, 215, 0, 0.6);
+}
+
+/* =========================
+   FILTROS AVANÇADOS (Sort + Faixa PIX)
+========================= */
+
+.filter-tools {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.sort-select {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.sort-select:hover {
+  border-color: #FFD700;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #FFD700;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+}
+
+
+/* =========================
+   UPDATE BAR (Topo)
+========================= */
+
+.update-bar {
+  width: 100%;
+  background: linear-gradient(90deg, #0f0f0f, #1a1a1a);
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.update-left strong {
+  color: #FFD700;
+}
+
+.update-source {
+  margin-left: 8px;
+  color: #aaa;
+}
+
+.btn-changelog {
+  background: #FFD700;
+  color: #000;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-changelog:hover {
+  background: #ffea70;
+}
+
+
+/* =========================
+   MODAL (Changelog)
+========================= */
+
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: #111;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #333;
+  animation: fadeInScale 0.2s ease;
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #FFD700;
+  font-size: 18px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal-body {
+  max-height: 400px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.changelog-entry {
+  margin-bottom: 18px;
+}
+
+.changelog-date {
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.changelog-list {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.changelog-list li {
+  margin-bottom: 4px;
+  color: #aaa;
+}
+
+
+/* =========================
+   TAG DE DESCONTO PIX
+========================= */
+
+.discount-tag {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #00ff88;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 768px) {
+  .filter-tools {
+    flex-direction: column;
+  }
+
+  .update-bar {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
 }
