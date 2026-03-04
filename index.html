@@ -24,11 +24,6 @@
       <img src="images/logo.png" alt="PHONE STORE Logo">
     </div>
   </div>
-  <div class="update-bar" id="updateBar">
-  <div class="update-left">
-    <strong>Atualizado em:</strong> <span id="lastUpdateText">--/--/----</span>
-    <span class="update-source" id="updateSourceText"></span>
-  </div>
 
   <button class="btn-changelog" onclick="openChangelog()">Ver mudanças</button>
 </div>
@@ -110,24 +105,7 @@ const ODRES = { label: 'OdresCred', url: 'https://vendas.odrescred.com.br/login'
 const PAYJOY = { label: 'PayJoy', url: 'https://app.payjoy.com/merchant3/merchant-login' };
 const WATU = { label: 'Watu', url: 'https://br-simu.watu.com/#/login' };
 
-const PORTFOLIO_META = {
-  lastUpdate: '26/02/2026',
-  source: 'Eletromil Distribuidora 🇧🇷',
-};
 
-const CHANGELOG = [
-  {
-    date: '26/02/2026',
-    title: 'Atualização Eletromil',
-    items: [
-      'Incluído: ITEL A80 128/4 (R$ 560,00) + cores/quantidades',
-      'Atualizado: Samsung (A06/A07/A16/A17/A26/A36) com preços e estoque',
-      'Atualizado: iPhone 16 128 (R$ 5.300,00) e iPhone 17 256 (R$ 6.500,00)',
-      'Atualizado: Realme C75/C85 com preços e cores',
-      'Incluído/Atualizado: Xiaomi Pad SE 128/4 (R$ 1.100,00)',
-    ]
-  }
-];
 
 function initUpdateBar() {
   const lastUpdateEl = document.getElementById('lastUpdateText');
@@ -400,7 +378,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="modal-backdrop" id="changelogBackdrop" onclick="closeChangelog(event)">
   <div class="modal" role="dialog" aria-modal="true">
     <div class="modal-header">
-      <h3>📌 Changelog (Mudanças)</h3>
+      <h3>📌 Mudanças</h3>
       <button class="modal-close" onclick="closeChangelog()">✕</button>
     </div>
     <div class="modal-body" id="changelogBody"></div>
