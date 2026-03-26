@@ -8,7 +8,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial;
-    background: #0b0b0b;
+    background: linear-gradient(180deg, #0b0b0b, #111);
     color: white;
 }
 
@@ -35,11 +35,16 @@ body {
 
 .cat-btn {
     margin-right:10px;
-    padding:6px 10px;
-    border-radius:6px;
-    background:#222;
+    padding:8px 12px;
+    border-radius:8px;
+    background:#1a1a1a;
     cursor:pointer;
-    display:inline-block;
+    transition:0.2s;
+}
+
+.cat-btn:hover {
+    background:#ffd700;
+    color:black;
 }
 
 .search {
@@ -48,9 +53,11 @@ body {
 
 .search input {
     width:100%;
-    padding:10px;
-    border-radius:6px;
+    padding:12px;
+    border-radius:8px;
     border:none;
+    background:#1a1a1a;
+    color:white;
 }
 
 .funil-img {
@@ -69,17 +76,51 @@ body {
 
 .item {
     margin-bottom: 15px;
+    padding:12px;
+    border-radius:10px;
+    background:#141414;
+    transition:0.3s;
+}
+
+.item:hover {
+    transform: scale(1.01);
+}
+
+.top1 {
+    border:1px solid gold;
+    box-shadow: 0 0 10px gold;
+}
+
+.top2 {
+    border:1px solid silver;
+}
+
+.top3 {
+    border:1px solid #cd7f32;
+}
+
+.posicao {
+    font-weight:bold;
+    margin-bottom:5px;
 }
 
 .barra {
-    height: 8px;
+    height: 10px;
     background:#222;
     border-radius:5px;
+    overflow:hidden;
 }
 
 .progresso {
     height:100%;
-    background:#ffd700;
+    background: linear-gradient(90deg,#ffd700,#ffae00);
+    width:0%;
+    transition: width 1.2s ease;
+}
+
+.valor {
+    margin-top:5px;
+    font-size:14px;
 }
 </style>
 </head>
@@ -92,7 +133,7 @@ body {
 </div>
 
 <div class="categorias">
-    <span class="cat-btn" onclick="filtrar('faturado')">💰 Geral</span>
+    <span class="cat-btn" onclick="mostrarVendedores()">💰 Geral</span>
     <span class="cat-btn" onclick="filtrar('acessorios')">📦 Acessórios</span>
     <span class="cat-btn" onclick="filtrar('aparelhos')">📱 Aparelhos</span>
     <span class="cat-btn" onclick="filtrar('caixa')">🔊 Caixa</span>
@@ -148,6 +189,12 @@ function ordenar(){
     renderVendedores(dadosVendedores)
 }
 
+function mostrarVendedores(){
+    modo = "vendedores"
+    document.getElementById("funilImg").style.display = "none"
+    ordenar()
+}
+
 function carregarFunil(){
     modo = "funil"
     document.getElementById("funilImg").style.display = "block"
@@ -168,10 +215,21 @@ function carregarFunil(){
     })
 }
 
-function renderVendedores(dados){
-    modo = "vendedores"
-    document.getElementById("funilImg").style.display = "none"
+function medalha(pos){
+    if(pos===1) return "🥇"
+    if(pos===2) return "🥈"
+    if(pos===3) return "🥉"
+    return pos
+}
 
+function classeTop(pos){
+    if(pos===1) return "item top1"
+    if(pos===2) return "item top2"
+    if(pos===3) return "item top3"
+    return "item"
+}
+
+function renderVendedores(dados){
     const ranking = document.getElementById("ranking")
     ranking.innerHTML = ""
 
@@ -181,12 +239,12 @@ function renderVendedores(dados){
         const percent = (d[tipoRanking] / max) * 100
 
         ranking.innerHTML += `
-        <div class="item">
-            <div>${d.pos} - ${d.nome.toUpperCase()}</div>
+        <div class="${classeTop(d.pos)}">
+            <div class="posicao">${medalha(d.pos)} - ${d.nome.toUpperCase()}</div>
             <div class="barra">
                 <div class="progresso" style="width:${percent}%"></div>
             </div>
-            <small>${money(d[tipoRanking])}</small>
+            <div class="valor">${money(d[tipoRanking])}</div>
         </div>`
     })
 }
@@ -201,18 +259,20 @@ function renderFunil(dados){
         const percent = (d.valor / max) * 100
 
         ranking.innerHTML += `
-        <div class="item">
-            <div>${d.pos} - ${d.nome.toUpperCase()}</div>
+        <div class="${classeTop(d.pos)}">
+            <div class="posicao">${medalha(d.pos)} - ${d.nome.toUpperCase()}</div>
             <div class="barra">
                 <div class="progresso" style="width:${percent}%"></div>
             </div>
-            <small>${money(d.valor)}</small>
+            <div class="valor">${money(d.valor)}</div>
         </div>`
     })
 }
 
 function filtrar(tipo){
     tipoRanking = tipo
+    modo = "vendedores"
+    document.getElementById("funilImg").style.display = "none"
     ordenar()
 }
 
