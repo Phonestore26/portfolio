@@ -5,7 +5,6 @@
 <title>Ranking Phone Store</title>
 
 <style>
-/* (SEU CSS ORIGINAL — NÃO ALTEREI NADA) */
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial;
@@ -74,12 +73,25 @@ body {
     transition: width 1.2s ease;
 }
 .valor { margin-top:5px; font-size:14px; }
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 900;    
+    text-transform: uppercase;
+    letter-spacing: -1px;
+        color: #ffffff;
+}
+
+.logo span {
+    color: #f2c029;
+}
 </style>
 </head>
 
 <body>
 
 <div class="header">
+    <div class="logo">PHONE<span>STORE</span></div>
     <h2>🏆 Ranking Geral</h2>
     <a href="index.html" class="btn">Voltar</a>
 </div>
@@ -89,6 +101,7 @@ body {
     <span class="cat-btn" onclick="filtrar('acessorios')">📦 Acessórios</span>
     <span class="cat-btn" onclick="filtrar('aparelhos')">📱 Aparelhos</span>
     <span class="cat-btn" onclick="filtrar('caixa')">🔊 Caixa</span>
+    <span class="cat-btn" onclick="filtrar('jbl')">🔊 JBL</span>
     <span class="cat-btn" onclick="filtrar('protect')">🛡 Protect</span>
     <span class="cat-btn" onclick="carregarFunil()">🔥 Funil</span>
 </div>
@@ -119,7 +132,8 @@ let dadosFunil = []
 let tipoRanking = "faturado"
 let modo = "vendedores"
 
-fetch("https://opensheet.elk.sh/1Sz4W_66JfV1E0On0tOJAQmIXGvTd5IZ8Vdm1wTVxZfI/VENDEDORES_TOTAIS").then(r=>r.json())
+fetch("https://opensheet.elk.sh/1Sz4W_66JfV1E0On0tOJAQmIXGvTd5IZ8Vdm1wTVxZfI/VENDEDORES_TOTAIS")
+.then(r=>r.json())
 .then(data=>{
     dadosVendedores = data.map(item => ({
         nome: item["Nome Fantasia"],
@@ -127,6 +141,7 @@ fetch("https://opensheet.elk.sh/1Sz4W_66JfV1E0On0tOJAQmIXGvTd5IZ8Vdm1wTVxZfI/VEN
         acessorios: parseBR(item["ACESSORIOS_VALOR"]),
         aparelhos: parseBR(item["APARELHOS_VALOR"]),
         caixa: parseBR(item["CAIXA_SOM_VALOR"]),
+        jbl: parseBR(item["CAIXA_JBL"]), 
         protect: parseBR(item["PROTECT_VALOR"]),
     }))
     .filter(d => d.faturado > 0)
@@ -135,14 +150,16 @@ fetch("https://opensheet.elk.sh/1Sz4W_66JfV1E0On0tOJAQmIXGvTd5IZ8Vdm1wTVxZfI/VEN
 })
 
 function ordenar(){
-    dadosVendedores.sort((a,b)=> b[tipoRanking] - a[tipoRanking])
+    if(!dadosVendedores.length) return
+
+    dadosVendedores.sort((a,b)=> (b[tipoRanking] || 0) - (a[tipoRanking] || 0))
     dadosVendedores.forEach((d,i)=> d.pos = i+1)
     renderVendedores(dadosVendedores)
 }
 
 function mostrarVendedores(){
     modo = "vendedores"
-    tipoRanking = "faturado" // 🔥 RESET CORRETO AQUI
+    tipoRanking = "faturado"
     document.getElementById("funilImg").style.display = "none"
     ordenar()
 }
@@ -185,18 +202,23 @@ function renderVendedores(dados){
     const ranking = document.getElementById("ranking")
     ranking.innerHTML = ""
 
-    const max = dados[0]?.[tipoRanking] || 1
+    if(!dados.length){
+        ranking.innerHTML = "<p style='text-align:center'>Nenhum resultado</p>"
+        return
+    }
+
+    const max = Math.max(...dados.map(d => d[tipoRanking] || 0), 1)
 
     dados.forEach(d=>{
         const percent = (d[tipoRanking] / max) * 100
 
         ranking.innerHTML += `
         <div class="${classeTop(d.pos)}">
-            <div class="posicao">${medalha(d.pos)} - ${d.nome.toUpperCase()}</div>
+            <div class="posicao">${medalha(d.pos)} - ${d.nome?.toUpperCase()}</div>
             <div class="barra">
                 <div class="progresso" style="width:${percent}%"></div>
             </div>
-            <div class="valor">${money(d[tipoRanking])}</div>
+            <div class="valor">${money(d[tipoRanking] || 0)}</div>
         </div>`
     })
 }
@@ -205,18 +227,23 @@ function renderFunil(dados){
     const ranking = document.getElementById("ranking")
     ranking.innerHTML = ""
 
-    const max = dados[0]?.valor || 1
+    if(!dados.length){
+        ranking.innerHTML = "<p style='text-align:center'>Nenhum resultado</p>"
+        return
+    }
+
+    const max = Math.max(...dados.map(d => d.valor || 0), 1)
 
     dados.forEach(d=>{
         const percent = (d.valor / max) * 100
 
         ranking.innerHTML += `
         <div class="${classeTop(d.pos)}">
-            <div class="posicao">${medalha(d.pos)} - ${d.nome.toUpperCase()}</div>
+            <div class="posicao">${medalha(d.pos)} - ${d.nome?.toUpperCase()}</div>
             <div class="barra">
                 <div class="progresso" style="width:${percent}%"></div>
             </div>
-            <div class="valor">${money(d.valor)}</div>
+            <div class="valor">${money(d.valor || 0)}</div>
         </div>`
     })
 }
