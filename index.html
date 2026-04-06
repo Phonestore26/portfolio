@@ -1,284 +1,265 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PORTFÓLIO OFICIAL 2026 🔥 ATUALIZADO</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Phone Store | Portfólio 2026</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root {
+  --primary: #ffd700;
+  --bg: #050505;
+  --card: #111;
+  --text: #fff;
+  --muted: #aaa;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: radial-gradient(circle at top, #0a0a15, #050505);
+  color: var(--text);
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #222;
+}
+
+.logo img { height: 40px; }
+
+.btn-ranking {
+  background: var(--primary);
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.hero h2 { font-size: 32px; margin-bottom: 10px; }
+.hero p { color: var(--muted); }
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #151515;
+  border: 1px solid #222;
+  padding: 10px 18px;
+  border-radius: 50px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: black;
+}
+
+/* SEARCH */
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 300px;
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 1px solid #333;
+  background: #000;
+  color: white;
+}
+
+/* PRODUCTS */
+.products-section { padding: 20px; }
+
+.brand-section { margin-bottom: 40px; }
+
+.section-header h3 {
+  margin-bottom: 15px;
+  border-left: 4px solid var(--primary);
+  padding-left: 10px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 15px;
+  transition: 0.3s;
+  border: 1px solid #222;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.card-img img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.card-brand {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.card-name {
+  font-weight: 700;
+  margin: 5px 0;
+}
+
+.price-card {
+  text-decoration: line-through;
+  font-size: 12px;
+  color: #777;
+}
+
+.price-pix {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.price-label {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.discount-tag {
+  font-size: 11px;
+  color: #00ff88;
+}
+
+/* BOTÕES FINANCEIROS */
+.finance-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn-finance {
+  flex: 1;
+  text-align: center;
+  font-size: 10px;
+  padding: 6px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid #333;
+  background: #000;
+  color: white;
+  transition: 0.2s;
+}
+
+.btn-finance:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+@media(max-width:600px){
+  .search-input { width: 90%; }
+}
+</style>
 </head>
+
 <body>
 
-<div class="tech-bg"></div>
-
-<div class="urgent-banner">🔥 ESTOQUE ATUALIZADO AGORA MESMO — PROMOÇÕES IMPERDÍVEIS! 🔥</div>
-
 <header>
-  <div class="header-inner">
-    <div class="logo">
-      <img src="images/logo.png" alt="PHONE STORE Logo">
-    </div>
+  <div class="logo">
+    <img src="images/logo.png">
   </div>
-</div>
+  <a href="ranking.html" class="btn-ranking">🏆 Ranking</a>
 </header>
- <a href="ranking.html" style="
-  display:inline-block;
-  margin:20px;
-  padding:10px 20px;
-  background: #ffd700;;
-  color:#000;
-  font-weight:700;
-  border-radius:8px;
-  text-decoration:none;
-  margin-left: 80%;
-">
-  🏆Ranking Vendedores
-</a>
 
 <section class="hero">
-  <h2>PORTFÓLIO OFICIAL 2026</h2>
-  <p>Tecnologia de ponta com os melhores preços da cidade!</p>
-
-
-<section class="tabs-container">
-  <div class="tabs">
-    <button class="tab-btn active" onclick="setCategory('all', this)">📱 TODOS</button>
-    <button class="tab-btn" onclick="setCategory('Smartphone', this)">📲 SMARTPHONES</button>
-    <button class="tab-btn" onclick="setCategory('Som', this)">🔊 CAIXAS DE SOM</button>
-    <button class="tab-btn" onclick="setCategory('Tablet', this)">🖥️ TABLETS</button>
-  </div>
+  <h2>PORTFÓLIO 2026</h2>
+  <p>Os melhores preços da cidade 🔥</p>
 </section>
 
+<div class="tabs">
+  <button class="tab-btn active" onclick="setCategory('all', this)">📱 Todos</button>
+  <button class="tab-btn" onclick="setCategory('Smartphone', this)">📲 Smartphones</button>
+  <button class="tab-btn" onclick="setCategory('Som', this)">🔊 Som</button>
+  <button class="tab-btn" onclick="setCategory('Tablet', this)">🖥 Tablets</button>
+</div>
+
 <div class="filter-bar">
-  <input type="text" class="search-input" id="searchInput" placeholder="Busque..." oninput="renderProducts()">
+  <input type="text" class="search-input" id="searchInput" placeholder="Buscar produto..." oninput="renderProducts()">
 </div>
-
-<div class="filter-tools">
-</div>
-
-
 
 <section class="products-section" id="productsContainer"></section>
-
-<footer></footer>
-
 
 <script src="products.js"></script>
 
 <script>
-let currentBrand = 'all';
-let currentCategory = 'all';
-
-let currentSort = localStorage.getItem('ps_sort') || 'featured';
-let currentPriceRange = localStorage.getItem('ps_price_range') || 'all';
-
 const BRASIL_CARD = { label: 'BrasilCard', url: 'https://www.brasilcard.net/bca/lojista/login' };
 const ODRES = { label: 'OdresCred', url: 'https://vendas.odrescred.com.br/login' };
 const PAYJOY = { label: 'PayJoy', url: 'https://app.payjoy.com/merchant3/merchant-login' };
 const WATU = { label: 'Watu', url: 'https://br-simu.watu.com/#/login' };
 
-
-
-function initUpdateBar() {
-  const lastUpdateEl = document.getElementById('lastUpdateText');
-  const sourceEl = document.getElementById('updateSourceText');
-
-  if (lastUpdateEl) lastUpdateEl.textContent = PORTFOLIO_META.lastUpdate || '--/--/----';
-  if (sourceEl) sourceEl.textContent = PORTFOLIO_META.source ? ` • Fonte: ${PORTFOLIO_META.source}` : '';
-}
-
-function openChangelog() {
-  const backdrop = document.getElementById('changelogBackdrop');
-  const body = document.getElementById('changelogBody');
-  if (!backdrop || !body) return;
-
-  body.innerHTML = CHANGELOG.map(entry => {
-    const items = (entry.items || []).map(i => `<li>${escapeHtml(i)}</li>`).join('');
-    return `
-      <div class="changelog-entry">
-        <div class="changelog-date"><strong>${escapeHtml(entry.date || '')}</strong> — ${escapeHtml(entry.title || '')}</div>
-        <ul class="changelog-list">${items}</ul>
-      </div>
-    `;
-  }).join('');
-
-  backdrop.style.display = 'flex';
-}
-
-function closeChangelog(e) {
-  if (e && e.target && e.target.id !== 'changelogBackdrop') return;
-
-  const backdrop = document.getElementById('changelogBackdrop');
-  if (backdrop) backdrop.style.display = 'none';
-}
-
-function escapeHtml(str) {
-  return String(str || '')
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
-}
+let currentCategory = 'all';
 
 function setCategory(category, el) {
   currentCategory = category;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  if (el) el.classList.add('active');
+  el.classList.add('active');
   renderProducts();
-}
-
-function setBrand(brand, el) {
-  currentBrand = brand;
-  document.querySelectorAll('.brand-pill').forEach(p => p.classList.remove('active'));
-  if (el) el.classList.add('active');
-  renderProducts();
-}
-
-function setSort(sortValue) {
-  currentSort = sortValue;
-  localStorage.setItem('ps_sort', currentSort);
-  renderProducts();
-}
-
-function setPriceRange(rangeValue) {
-  currentPriceRange = rangeValue;
-  localStorage.setItem('ps_price_range', currentPriceRange);
-  renderProducts();
-}
-
-function isWithinPixRange(pixValue, range) {
-  const v = Number(pixValue);
-  if (!Number.isFinite(v)) return false;
-
-  switch (range) {
-    case '0-799': return v <= 799;
-    case '0-1199': return v <= 1199;
-    case '0-1699': return v <= 1699;
-    case '0-2000': return v <= 2000;
-    case '2000+': return v > 2000;
-    case 'all':
-    default:
-      return true;
-  }
 }
 
 function moneyBR(value) {
   return Number(value).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
-function getDiscount(p) {
-  const price = Number(p.price);
-  const pix = Number(p.pix);
-  if (!Number.isFinite(price) || !Number.isFinite(pix)) return 0;
-  return Math.max(0, price - pix);
-}
-
 function getFinanceButtons(product) {
-  if (
-    product.brand === 'Apple' ||
-    product.category === 'Tablet' ||
-    product.category === 'Som'
-  ) {
-    return [BRASIL_CARD];
-  }
-
-  if (product.brand === 'Samsung') {
-    return [BRASIL_CARD, ODRES, PAYJOY, WATU];
-  }
-
-  if (
-    product.brand === 'Realme' ||
-    product.brand === 'Motorola' ||
-    product.brand === 'Xiaomi'
-  ) {
-    return [BRASIL_CARD, ODRES, PAYJOY];
-  }
-
+  if (product.brand === 'Samsung') return [BRASIL_CARD, ODRES, PAYJOY, WATU];
+  if (['Xiaomi','Realme','Motorola'].includes(product.brand)) return [BRASIL_CARD, ODRES, PAYJOY];
   return [BRASIL_CARD];
-}
-
-function normalizeImgPath(img) {
-  if (!img) return '';
-  const s = String(img);
-  if (s.startsWith('http://') || s.startsWith('https://')) return s;
-  if (s.startsWith('images/')) return s;
-  return `images/${s}`;
-}
-
-function dedupeProducts(list) {
-  const map = new Map();
-  list.forEach(p => {
-    const key = `${p.category}__${p.brand}__${p.name}`.toLowerCase();
-    map.set(key, p);
-  });
-  return [...map.values()];
 }
 
 function renderProducts() {
   const container = document.getElementById('productsContainer');
-  const searchEl = document.getElementById('searchInput');
-  const search = (searchEl ? searchEl.value : '').toLowerCase();
+  const search = document.getElementById('searchInput').value.toLowerCase();
 
   container.innerHTML = '';
 
-  if (typeof allProducts === 'undefined') {
-    container.innerHTML = `<p style="color:#aaa;padding:20px;">Erro ao carregar produtos (allProducts indefinido).</p>`;
-    return;
-  }
-
-  const normalized = dedupeProducts(allProducts).map(p => ({
-    ...p,
-    img: normalizeImgPath(p.img),
-  }));
-
-  let filtered = normalized.filter(p => {
-    const matchCategory = currentCategory === 'all' || p.category === currentCategory;
-    const matchBrand = currentBrand === 'all' || p.brand === currentBrand;
-    const matchSearch =
-      (p.name || '').toLowerCase().includes(search) ||
-      (p.brand || '').toLowerCase().includes(search);
-
-    const matchPixRange = isWithinPixRange(p.pix, currentPriceRange);
-
-    return matchCategory && matchBrand && matchSearch && matchPixRange;
-  });
-
-  filtered.sort((a, b) => {
-    const apix = Number(a.pix) || 0;
-    const bpix = Number(b.pix) || 0;
-
-    if (currentSort === 'pix_asc') return apix - bpix;
-    if (currentSort === 'pix_desc') return bpix - apix;
-
-    if (currentSort === 'discount_desc') {
-      const ad = getDiscount(a);
-      const bd = getDiscount(b);
-      return bd - ad;
-    }
-
-    if (currentSort === 'name_asc') {
-      const an = (a.name || '').toLowerCase();
-      const bn = (b.name || '').toLowerCase();
-      return an.localeCompare(bn);
-    }
-
-    const aScore = (a.badge ? 10 : 0) + Math.min(10, getDiscount(a) / 200);
-    const bScore = (b.badge ? 10 : 0) + Math.min(10, getDiscount(b) / 200);
-    return bScore - aScore;
-  });
+  let filtered = allProducts.filter(p =>
+    (currentCategory === 'all' || p.category === currentCategory) &&
+    p.name.toLowerCase().includes(search)
+  );
 
   const brands = [...new Set(filtered.map(p => p.brand))];
-
-  if (brands.length === 0) {
-    container.innerHTML = `<p style="color:#aaa;padding:20px;">Nenhum produto encontrado com esses filtros.</p>`;
-    return;
-  }
 
   brands.forEach(brand => {
     const section = document.createElement('div');
@@ -288,79 +269,38 @@ function renderProducts() {
     const grid = document.createElement('div');
     grid.className = 'products-grid';
 
-    filtered
-      .filter(p => p.brand === brand)
-      .forEach(p => {
-        const badgeHtml = p.badge ? `<div class="badge">${escapeHtml(p.badge)}</div>` : '';
+    filtered.filter(p => p.brand === brand).forEach(p => {
+      const financeButtons = getFinanceButtons(p).map(f => `
+        <a href="${f.url}" target="_blank" class="btn-finance">${f.label}</a>
+      `).join('');
 
-        const priceCard = moneyBR(p.price);
-        const pricePix = moneyBR(p.pix);
-        const showCardPrice = Number(p.pix) < Number(p.price);
-
-        const discount = getDiscount(p);
-        const discountHtml = (showCardPrice && discount > 0)
-          ? `<div class="discount-tag">Economia no PIX: ${moneyBR(discount)}</div>`
-          : '';
-
-        const financeList = getFinanceButtons(p);
-        const financeButtonsHtml = financeList.map(f => `
-          <a href="${f.url}" target="_blank" class="btn-finance">
-            ${f.label}
-          </a>
-        `).join('');
-
-        grid.innerHTML += `
-          <div class="product-card">
-            ${badgeHtml}
-            <div class="card-img">
-              <img src="${p.img}" alt="${escapeHtml(p.name)}"
-                onerror="this.src='images/logo.png'">
-            </div>
-
-            <div class="card-info">
-              <div class="card-brand">${escapeHtml(p.brand)}</div>
-              <div class="card-name">${escapeHtml(p.name)}</div>
-
-              <div class="price-block">
-                ${showCardPrice ? `<div class="price-card">${priceCard}</div>` : ''}
-                <div class="price-pix">${pricePix}</div>
-                <span class="price-label">À VISTA NO PIX</span>
-                ${discountHtml}
-              </div>
-
-              <div class="finance-actions">
-                ${financeButtonsHtml}
-              </div>
-            </div>
+      grid.innerHTML += `
+        <div class="product-card">
+          <div class="card-img">
+            <img src="${p.img}">
           </div>
-        `;
-      });
+
+          <div class="card-brand">${p.brand}</div>
+          <div class="card-name">${p.name}</div>
+
+          <div class="price-card">${moneyBR(p.price)}</div>
+          <div class="price-pix">${moneyBR(p.pix)}</div>
+          <div class="price-label">À vista no PIX</div>
+
+          <div class="finance-actions">
+            ${financeButtons}
+          </div>
+        </div>
+      `;
+    });
 
     section.appendChild(grid);
     container.appendChild(section);
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const sortSelect = document.getElementById('sortSelect');
-  if (sortSelect) sortSelect.value = currentSort;
-
-  const priceRangeSelect = document.getElementById('priceRangeSelect');
-  if (priceRangeSelect) priceRangeSelect.value = currentPriceRange;
-
-  initUpdateBar();
-  renderProducts();
-});
+renderProducts();
 </script>
-<div class="modal-backdrop" id="changelogBackdrop" onclick="closeChangelog(event)">
-  <div class="modal" role="dialog" aria-modal="true">
-    <div class="modal-header">
-      <h3>📌 Mudanças</h3>
-      <button class="modal-close" onclick="closeChangelog()">✕</button>
-    </div>
-    <div class="modal-body" id="changelogBody"></div>
-  </div>
-</div>
 
 </body>
 </html>
